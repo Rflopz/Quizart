@@ -1,0 +1,18 @@
+{
+  "name": "quizart-server",
+  "module": "app.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run --watch ./src/app.ts"
+  },
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "hono": "^3.6.0",
+    "mongoose": "^7.5.1"
+  }
+}

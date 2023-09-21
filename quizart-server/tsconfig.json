@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "lib": ["ESNext"],
+    "module": "esnext",
+    "target": "esnext",
+    "moduleResolution": "bundler",
+    "moduleDetection": "force",
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "composite": true,
+    "strict": true,
+    "downlevelIteration": true,
+    "skipLibCheck": true,
+    "jsx": "preserve",
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowJs": true,
+    "baseUrl": "./",
+    "sourceMap": true,
+    "paths": {
+      "@db/*": ["./src/Db/*"],
+      "@interfaces/*": ["./src/Interfaces/*"],
+      "@auth/*": ["./src/Modules/Auth/*"],
+      "@user/*": ["./src/Modules/User/*"],
+      "@libs/*": ["./src/Libs/*"]
+    },
+    "types": [
+      "bun-types" // add Bun global
+    ]
+  },
+  "include": ["./src/**/*.ts"],
+  "exclude": ["node_modules"]
+}
