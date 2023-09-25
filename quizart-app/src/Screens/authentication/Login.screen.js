@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Alert, StyleSheet, Text, View } from "react-native";
 
-import Button from "../Components/UI/Button";
-import LoadingOverlay from "../Components/UI/LoadingOverlay";
-import LoginForm from "../Components/Auth/LoginForm.component";
-import { login } from "../Services/Auth.http";
-import useAuthentication from "../Hooks/useAuthentication";
+import Button from "../../Components/UI/Button";
+import LoadingOverlay from "../../Components/UI/LoadingOverlay";
+import LoginForm from "../../Components/Auth/LoginForm.component";
+import { login } from "../../Services/Auth.http";
+import useAuthentication from "../../Hooks/useAuthentication";
 
 const initLoginForm = {
   email: { value: "", isValid: true },

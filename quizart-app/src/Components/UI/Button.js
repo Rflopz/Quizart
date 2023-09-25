@@ -1,16 +1,27 @@
 import { StyleSheet, Pressable, Text, View } from "react-native";
-import { Colors } from "../../Constants/Colors";
+import { Colors } from "../../Libs/Colors";
 
-const Button = ({ text, children, onPress, color, flat = false }) => {
+const Button = ({
+  text,
+  children,
+  onPress,
+  color,
+  style,
+  textStyle,
+  isEnable = true,
+  flat = false,
+}) => {
   return (
     <Pressable
       onPress={onPress}
+      disabled={!isEnable}
       style={({ pressed }) => [
         styles.container,
         !flat && styles.containerBorders,
         color === "primary"
           ? styles.containerPrimary
           : styles.containerSecondary,
+        style,
       ]}
     >
       <View>
@@ -18,11 +29,11 @@ const Button = ({ text, children, onPress, color, flat = false }) => {
           style={[
             styles.text,
             color === "primary" ? styles.textPrimary : styles.textSecondary,
+            textStyle,
           ]}
         >
-          {text}
+          {text || children}
         </Text>
-        {children}
       </View>
     </Pressable>
   );

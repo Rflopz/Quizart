@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
-    "lib": ["ESNext"],
+    "lib": [
+      "ESNext"
+    ],
     "module": "esnext",
     "target": "esnext",
     "moduleResolution": "bundler",
@@ -18,16 +20,33 @@
     "baseUrl": "./",
     "sourceMap": true,
     "paths": {
-      "@db/*": ["./src/Db/*"],
-      "@interfaces/*": ["./src/Interfaces/*"],
-      "@auth/*": ["./src/Modules/Auth/*"],
-      "@user/*": ["./src/Modules/User/*"],
-      "@libs/*": ["./src/Libs/*"]
+      "@db/*": [
+        "./src/Db/*"
+      ],
+      "@interfaces/*": [
+        "./src/Interfaces/*"
+      ],
+      "@auth/*": [
+        "./src/Modules/Auth/*"
+      ],
+      "@user/*": [
+        "./src/Modules/User/*"
+      ],
+      "@quiz/*": [
+        "./src/Modules/Quiz/*"
+      ],
+      "@libs/*": [
+        "./src/Libs/*"
+      ]
     },
     "types": [
       "bun-types" // add Bun global
     ]
   },
-  "include": ["./src/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "./src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

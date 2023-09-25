@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { Alert, StyleSheet, Text, View } from "react-native";
 
-import Input from "../Components/UI/Input";
-import Button from "../Components/UI/Button";
-import { createAccount } from "../Services/Auth.http";
-import LoadingOverlay from "../Components/UI/LoadingOverlay";
-import useAuthentication from "../Hooks/useAuthentication";
-import SignupForm from "../Components/Auth/SignupForm.component";
+import Button from "../../Components/UI/Button";
+import { createAccount } from "../../Services/Auth.http";
+import LoadingOverlay from "../../Components/UI/LoadingOverlay";
+import useAuthentication from "../../Hooks/useAuthentication";
+import SignupForm from "../../Components/Auth/SignupForm.component";
 
 const initSignupForm = {
   email: { value: "", isValid: true },

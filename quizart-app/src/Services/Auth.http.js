@@ -7,7 +7,6 @@ export const createAccount = async (user) => {
 };
 
 export const login = async (email, password) => {
-  const { data, headers } = await http.post("auth/login", { email, password });
-  console.log(headers);
-  return { ...data };
+  const { data } = await http.post("auth/login", { email, password });
+  return data;
 };

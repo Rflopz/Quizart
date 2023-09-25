@@ -1,0 +1,90 @@
+export const QuizMock = [
+  {
+    category: "Entertainment: Japanese Anime & Manga",
+    correct_answer: "True",
+    difficulty: "medium",
+    incorrect_answers: ["False"],
+    question:
+      "The animated film &quot;Spirited Away&quot; won the Academy Award for Best Animated Feature at the 75th Academy Awards in 2003.",
+    type: "boolean",
+  },
+  {
+    category: "Geography",
+    correct_answer: "Switzerland",
+    difficulty: "medium",
+    incorrect_answers: ["United Kingdom", "France", "Belgium"],
+    question:
+      "The World Health Organization headquarters is located in which European country?",
+    type: "multiple",
+  },
+  {
+    category: "Sports",
+    correct_answer: "False",
+    difficulty: "medium",
+    incorrect_answers: ["True"],
+    question: "Tennis was once known as Racquetball.",
+    type: "boolean",
+  },
+  {
+    category: "Entertainment: Video Games",
+    correct_answer: "False",
+    difficulty: "easy",
+    incorrect_answers: ["True"],
+    question: "Tetris is the #1 best-selling video game of all-time.",
+    type: "boolean",
+  },
+  {
+    category: "Entertainment: Video Games",
+    correct_answer: "Rufus",
+    difficulty: "medium",
+    incorrect_answers: ["Rutus", "Finn", "Apollo"],
+    question:
+      "In the game &quot;Red Dead Redemption&quot;, what is the name of John Marston&#039;s dog?",
+    type: "multiple",
+  },
+  {
+    category: "Science: Gadgets",
+    correct_answer: "7.62x39mm",
+    difficulty: "easy",
+    incorrect_answers: ["7.62x51mm", "5.56x45mm", "5.45x39mm"],
+    question: "What round is a classic AK-47 chambered in?",
+    type: "multiple",
+  },
+  {
+    category: "History",
+    correct_answer: "May 9th, 1945",
+    difficulty: "medium",
+    incorrect_answers: [
+      "September 2nd, 1945",
+      "August 9th, 1945",
+      "December 11th, 1945",
+    ],
+    question: "When was the Grand Patriotic War in the USSR concluded?",
+    type: "multiple",
+  },
+  {
+    category: "Celebrities",
+    correct_answer: "1962 ",
+    difficulty: "hard",
+    incorrect_answers: ["1970", "1960", "1972"],
+    question: "Gabe Newell was born in which year?",
+    type: "multiple",
+  },
+  {
+    category: "Science & Nature",
+    correct_answer: "False",
+    difficulty: "easy",
+    incorrect_answers: ["True"],
+    question:
+      "Water always boils at 100&deg;C, 212&deg;F, 373.15K, no matter where you are.",
+    type: "boolean",
+  },
+  {
+    category: "Entertainment: Japanese Anime & Manga",
+    correct_answer: "Kaname Chidori",
+    difficulty: "easy",
+    incorrect_answers: ["Teletha Testarossa", "Melissa Mao", "Kyoko Tokiwa"],
+    question: "Who is the main heroine of the anime, Full Metal Panic!",
+    type: "multiple",
+  },
+];

@@ -13,14 +13,10 @@ import { isJwtValid } from "@auth/auth.middleware";
 const userRoutes = new Hono();
 
 userRoutes
-  // .use("*", isJwtValid)
-  // .use("/:id", isIdOwner)
+  .use("*", isJwtValid)
+  .use("/:id", isIdOwner)
 
-  .get("/", async (c) => {
-    const result = await GetAllUsers();
-    console.log(result);
-    return c.json(result);
-  })
+  .get("/", async (c) => c.json(await GetAllUsers()))
   .get("/:id", async (c) => c.json(await GetUserById(c.req.param("id"))))
   .delete("/:id", async (c) => c.json(await DeleteUserById(c.req.param("id"))))
   .put("/:id", async (c) =>

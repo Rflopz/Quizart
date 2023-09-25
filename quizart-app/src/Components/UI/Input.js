@@ -1,5 +1,5 @@
 import { StyleSheet, Text, TextInput, View } from "react-native";
-import { Colors } from "../../Constants/Colors";
+import { Colors } from "../../Libs/Colors";
 
 const Input = ({ label, name, onUpdate, isSecure, ...inputProps }) => {
   const handleOnChange = (text) => onUpdate(name, text);
