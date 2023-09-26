@@ -1,6 +1,6 @@
 import { StyleSheet, Text, TextInput, View } from "react-native";
 import Button from "../../Components/UI/Button";
-import { useAtomValue, useSetAtom } from "jotai";
+import { useAtom, useSetAtom } from "jotai";
 import { quizOptionsAtom, quizzesAtom } from "../../Store/Atoms/Quiz.atoms";
 import DifficultyButtons from "../../Components/Quiz/DifficultyButtons";
 import QuizOption from "../../Components/Quiz/QuizOption";
@@ -8,7 +8,7 @@ import { getQuizzes } from "../../Services/Quiz.http";
 
 const QuizOptions = ({ navigation }) => {
   const gotoChooseCategory = () => navigation.navigate("QuizCategories");
-  const quizOptions = useAtomValue(quizOptionsAtom);
+  const [quizOptions, setQuizOptions] = useAtom(quizOptionsAtom);
   const setQuizzes = useSetAtom(quizzesAtom);
 
   const onStartQuiz = async () => {
@@ -19,6 +19,10 @@ const QuizOptions = ({ navigation }) => {
     );
     setQuizzes(result.quiz);
     navigation.replace("Quiz");
+  };
+
+  const handleChange = (v) => {
+    setQuizOptions((current) => ({ ...current, numQuestions: v }));
   };
 
   return (
@@ -36,6 +40,7 @@ const QuizOptions = ({ navigation }) => {
           value={quizOptions.numQuestions.toString()}
           style={styles.textInput}
           keyboardType="number-pad"
+          onChangeText={handleChange}
         />
       </QuizOption>
 

@@ -4,7 +4,9 @@ export const evalHTMLcode = (str) => {
     .replaceAll("&#039;", "'")
     .replaceAll("&amp;", "&")
     .replaceAll("&deg;", "°")
-    .replaceAll("&ouml;", "ö");
+    .replaceAll("&ouml;", "ö")
+    .replaceAll("&eacute;", "é")
+    .replaceAll("&micro;", "μ");
 };
 
 export const sortRandomly = (arr, max) => {

@@ -8,6 +8,7 @@ import QuizOptions from "../Screens/quiz/QuizOptions.screen";
 import DashboardScreen from "../Screens/dashboard/Dashboard.screen";
 import QuizCategories from "../Screens/quiz/QuizCategories.screen";
 import QuizScreen from "../Screens/quiz/Quiz.screen";
+import QuizSummaryScreen from "../Screens/quiz/QuizSummary.screen";
 
 const Stack = createNativeStackNavigator();
 
@@ -57,6 +58,13 @@ const AppStack = () => {
         component={QuizScreen}
         options={{
           title: "",
+        }}
+      />
+      <Stack.Screen
+        name="QuizSummary"
+        component={QuizSummaryScreen}
+        options={{
+          title: "Summary",
         }}
       />
     </Stack.Navigator>

@@ -5,30 +5,41 @@ import { useEffect, useRef, useState } from "react";
 import QuizHeader from "../../Components/Quiz/QuizHeader";
 import QuizAnswers from "../../Components/Quiz/QuizAnswers";
 
-const QuizScreen = () => {
+const QuizScreen = ({ navigation }) => {
   const questions = useAtomValue(quizzesAtom);
+  const [solvedQuestions, setSolvedQuestions] = useState([]);
 
   const [index, setIndex] = useState(0);
   const [isEnabled, setIsEnabled] = useState(true);
+  const [isCorrect, setIsCorrect] = useState(null);
   const current = questions[index];
 
-  const [isCorrect, setIsCorrect] = useState(null);
+  useEffect(() => {
+    if (solvedQuestions.length === questions.length) {
+      setTimeout(() => {
+        navigation.replace("QuizSummary", { solvedQuestions });
+      }, 1300);
+    }
+  }, [solvedQuestions]);
 
-  const nextQuestion = () => {
-    if (index + 1 < questions.length) {
-      setIndex((v) => v + 1);
-      setIsCorrect(null);
-      setIsEnabled(true);
-    } else setIndex(0);
-  };
+  const handleAnswerPress = async (answer) => {
+    let _isCorrect = answer === current.correct_answer;
 
-  const handleAnswerPress = (answer) => {
-    setIsCorrect(answer === current.correct_answer);
+    setIsCorrect(_isCorrect);
     setIsEnabled(false);
 
-    setTimeout(() => {
-      nextQuestion();
-    }, 1000);
+    setSolvedQuestions([
+      ...solvedQuestions,
+      { ...current, isCorrect: _isCorrect },
+    ]);
+
+    if (index + 1 < questions.length) {
+      setTimeout(() => {
+        setIndex((v) => v + 1);
+        setIsCorrect(null);
+        setIsEnabled(true);
+      }, 1500);
+    }
   };
 
   return (
@@ -49,17 +60,16 @@ const QuizScreen = () => {
         />
       </View>
       <View style={styles.answers}>
-        <Text
-          style={[
-            styles.answerFeedback,
-            isCorrect ? styles.answerCorrect : styles.answerWrong,
-          ]}
-        >
-          {isCorrect !== null &&
-            (isCorrect
-              ? "Correct!"
-              : `The correct answer is: ${current.correct_answer}`)}
-        </Text>
+        <Text>{solvedQuestions.length}</Text>
+        {isCorrect !== null &&
+          (isCorrect ? (
+            <Text style={styles.answerCorrect}>Good job!</Text>
+          ) : (
+            <View style={styles.wrongContainer}>
+              <Text style={styles.answerWrong}>The correct answer is: </Text>
+              <Text style={styles.answerWrong}>{current.correct_answer}</Text>
+            </View>
+          ))}
       </View>
     </View>
   );
@@ -81,13 +91,19 @@ const styles = StyleSheet.create({
     flex: 1,
     margin: 14,
   },
-  answerFeedback: {
-    fontSize: 24,
-  },
   answerCorrect: {
+    textAlign: "center",
+    fontSize: 24,
     color: "green",
   },
   answerWrong: {
     color: "red",
+    fontSize: 24,
+    textAlign: "center",
+  },
+  wrongContainer: {
+    flexDirection: "column",
+    justifyContent: "center",
+    alignContent: "center",
   },
 });
