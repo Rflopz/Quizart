@@ -37,6 +37,7 @@ const QuizOptions = ({ navigation }) => {
       </QuizOption>
       <QuizOption label="Num of questions">
         <TextInput
+          maxLength={2}
           value={quizOptions.numQuestions.toString()}
           style={styles.textInput}
           keyboardType="number-pad"

@@ -3,7 +3,7 @@ import Title from "../../Components/UI/Title";
 import Button from "../../Components/UI/Button";
 import { Colors } from "../../Libs/Colors";
 
-const QuizSummaryScreen = ({ route, navigate }) => {
+const QuizSummaryScreen = ({ route, navigation }) => {
   const { solvedQuestions } = route.params;
   console.log(solvedQuestions);
 
@@ -11,6 +11,9 @@ const QuizSummaryScreen = ({ route, navigate }) => {
 
   const totalCategories = new Set(solvedQuestions.map((item) => item.category));
   const totalDiff = new Set(solvedQuestions.map((item) => item.difficulty));
+
+  const gotoDashboard = () => navigation.replace("Dashboard");
+  const gotoQuizOptions = () => navigation.replace("QuizOptions");
 
   return (
     <View style={styles.container}>
@@ -30,12 +33,12 @@ const QuizSummaryScreen = ({ route, navigate }) => {
       <View>
         <Title>Your score is: </Title>
         <Text style={styles.score}>
-          {(correct.length * 100) / solvedQuestions.length}
+          {((correct.length * 100) / solvedQuestions.length).toFixed(2)}
         </Text>
       </View>
       <View>
-        <Button>Do another quiz</Button>
-        <Button flat color="primary">
+        <Button onPress={gotoQuizOptions}>Do another quiz</Button>
+        <Button onPress={gotoDashboard} flat color="primary">
           Go to dashboard
         </Button>
       </View>

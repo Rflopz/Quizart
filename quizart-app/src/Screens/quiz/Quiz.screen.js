@@ -60,7 +60,6 @@ const QuizScreen = ({ navigation }) => {
         />
       </View>
       <View style={styles.answers}>
-        <Text>{solvedQuestions.length}</Text>
         {isCorrect !== null &&
           (isCorrect ? (
             <Text style={styles.answerCorrect}>Good job!</Text>
