@@ -1,6 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
 import Title from "../UI/Title";
-import { evalHTMLcode } from "../../Libs/helpers";
 
 const QuizHeader = ({ leftText, question, category, difficulty }) => {
   return (
@@ -10,7 +9,7 @@ const QuizHeader = ({ leftText, question, category, difficulty }) => {
         <Text>Skip</Text>
       </View>
       <View style={styles.question}>
-        <Title>{evalHTMLcode(question)}</Title>
+        <Title>{question}</Title>
         <View style={styles.questionAttrs}>
           <Text style={styles.questionAttr}>
             {category} | {difficulty}

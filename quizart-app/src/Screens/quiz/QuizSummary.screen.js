@@ -2,17 +2,27 @@ import { StyleSheet, Text, View } from "react-native";
 import Title from "../../Components/UI/Title";
 import Button from "../../Components/UI/Button";
 import { Colors } from "../../Libs/Colors";
+import { useEffect } from "react";
+import { saveQuizResults } from "../../Services/Quiz.http";
+import { useAtomValue } from "jotai";
+import { userAtom } from "../../Store/Atoms/User.atoms";
 
 const QuizSummaryScreen = ({ route, navigation }) => {
   const { solvedQuestions } = route.params;
-  console.log(solvedQuestions);
+  const user = useAtomValue(userAtom);
 
   const correct = solvedQuestions.filter((x) => x.isCorrect);
 
   const totalCategories = new Set(solvedQuestions.map((item) => item.category));
   const totalDiff = new Set(solvedQuestions.map((item) => item.difficulty));
 
-  const gotoDashboard = () => navigation.replace("Dashboard");
+  useEffect(() => {
+    if (solvedQuestions)
+      saveQuizResults({ quiz: solvedQuestions, userId: user._id });
+  }, [solvedQuestions]);
+
+  const gotoDashboard = () =>
+    navigation.navigate("Dashboard", { refresh: true });
   const gotoQuizOptions = () => navigation.replace("QuizOptions");
 
   return (
@@ -20,7 +30,7 @@ const QuizSummaryScreen = ({ route, navigation }) => {
       <View>
         <Text style={styles.span}>
           <Text style={styles.number}>{solvedQuestions.length}</Text> total of
-          questions
+          question
         </Text>
         <Text style={styles.span}>
           <Text style={styles.number}>{totalCategories.size}</Text> total

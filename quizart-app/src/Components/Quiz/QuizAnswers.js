@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
-import { evalHTMLcode, sortRandomly } from "../../Libs/helpers";
+import { sortRandomly } from "../../Libs/helpers";
 import Button from "../UI/Button";
 
 const QuizAnswers = ({ correct, incorrects, max, onPress, isEnabled }) => {
@@ -36,7 +36,7 @@ const QuizAnswers = ({ correct, incorrects, max, onPress, isEnabled }) => {
       }
       onPress={handleAnswerPress.bind(this, item)}
     >
-      {evalHTMLcode(item.answer)}
+      {item.answer}
     </Button>
   ));
 };

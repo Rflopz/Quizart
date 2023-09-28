@@ -14,9 +14,9 @@ const DifficultyButtons = ({ selected }) => {
       <Button
         flat
         color="primary"
-        textStyle={selected === "" && styles.difficultyButtonText}
+        textStyle={selected === "0" && styles.difficultyButtonText}
         style={styles.difficultyButton}
-        onPress={onPress.bind(this, "")}
+        onPress={onPress.bind(this, "0")}
       >
         Any
       </Button>

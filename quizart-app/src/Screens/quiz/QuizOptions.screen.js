@@ -5,6 +5,7 @@ import { quizOptionsAtom, quizzesAtom } from "../../Store/Atoms/Quiz.atoms";
 import DifficultyButtons from "../../Components/Quiz/DifficultyButtons";
 import QuizOption from "../../Components/Quiz/QuizOption";
 import { getQuizzes } from "../../Services/Quiz.http";
+import { evalHTMLcode } from "../../Libs/helpers";
 
 const QuizOptions = ({ navigation }) => {
   const gotoChooseCategory = () => navigation.navigate("QuizCategories");
@@ -12,12 +13,27 @@ const QuizOptions = ({ navigation }) => {
   const setQuizzes = useSetAtom(quizzesAtom);
 
   const onStartQuiz = async () => {
+    console.log("quizOptions", quizOptions);
     const result = await getQuizzes(
       quizOptions.numQuestions,
       quizOptions.category.id,
       quizOptions.difficulty
     );
-    setQuizzes(result.quiz);
+
+    console.log(result);
+
+    const quiz = result.quiz.map((quiz) => {
+      return {
+        ...quiz,
+        question: evalHTMLcode(quiz.question),
+        correct_answer: evalHTMLcode(quiz.correct_answer),
+        incorrect_answers: quiz.incorrect_answers.map((answer) =>
+          evalHTMLcode(answer)
+        ),
+      };
+    });
+
+    setQuizzes(quiz);
     navigation.replace("Quiz");
   };
 

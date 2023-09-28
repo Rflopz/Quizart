@@ -6,11 +6,18 @@ export const getAllCategories = async () => {
 };
 
 export const getQuizzes = async (ammount, categoryId, difficulty) => {
-  let query = `?amount=${ammount}`;
+  const { data } = await http.get(
+    `quiz/${categoryId}/${difficulty}/${ammount}`
+  );
+  return data;
+};
 
-  if (categoryId !== 0) query += `&category=${categoryId}`;
-  if (difficulty !== "any") query += `&difficulty=${difficulty}`;
+export const saveQuizResults = async (quiz) => {
+  const { data } = await http.post("quiz", { quiz });
+  return data;
+};
 
-  const { data } = await http.post(`quiz`, { query });
+export const getQuizDashboard = async (id) => {
+  const { data } = await http.get(`quiz/dashboard/${id}`);
   return data;
 };
