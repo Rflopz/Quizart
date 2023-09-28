@@ -22,10 +22,8 @@ quizRoutes
   })
   .get("/dashboard/:id", async (c) => {
     const { id } = c.req.param();
-    // const { data, status } = await getQuizDashboard(id);
 
     const dashboard = await getDashboard(id);
-    console.log(dashboard);
 
     return c.json(dashboard, 200);
   })

@@ -2,7 +2,6 @@ import { http } from "./http";
 
 export const createAccount = async (user) => {
   const { data, headers } = await http.post("auth/signin", user);
-  console.log(headers.authorization);
   return data;
 };
 

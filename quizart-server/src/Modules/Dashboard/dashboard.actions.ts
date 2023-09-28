@@ -53,12 +53,10 @@ export const setDashboard = async (userId: string, quiz: IQuiz[]) => {
       const find = summary.find((x) => x.category == item.category);
       summary = summary.filter((item) => item.category !== find?.category);
 
-      console.log("find in summary", find);
       if (find !== undefined) item.nCorrectQuestions += find.nCorrectQuestions;
       return item;
     });
 
-    console.log("summary left", summary);
     current.summary = [...current.summary, ...summary];
 
     const result = await current.save();

@@ -24,8 +24,6 @@ const getQuizDashboard = async (id: string): Promise<IDto> => {
     userId: id,
   });
 
-  console.log(quizzes);
-
   return {
     data: { quizzes },
     status: 200,

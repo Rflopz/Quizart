@@ -1,6 +1,7 @@
 import axios from "axios";
+import { BASE_URL } from "@env";
 
 export const http = axios.create({
-  baseURL: "http://192.168.0.183:3030/",
+  baseURL: BASE_URL,
   timeout: 2000,
 });

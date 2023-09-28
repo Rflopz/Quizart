@@ -36,8 +36,6 @@ export const CreateUser = async (
     user.authentication.password = hash;
     user.authentication.salt = salt;
 
-    console.log(user);
-
     const result = await user.save();
 
     console.log("result", result);

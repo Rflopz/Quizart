@@ -13,14 +13,11 @@ const QuizOptions = ({ navigation }) => {
   const setQuizzes = useSetAtom(quizzesAtom);
 
   const onStartQuiz = async () => {
-    console.log("quizOptions", quizOptions);
     const result = await getQuizzes(
       quizOptions.numQuestions,
       quizOptions.category.id,
       quizOptions.difficulty
     );
-
-    console.log(result);
 
     const quiz = result.quiz.map((quiz) => {
       return {
