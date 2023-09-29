@@ -38,7 +38,6 @@ export const CreateUser = async (
 
     const result = await user.save();
 
-    console.log("result", result);
     const { authentication: _, ...newUser } = result.toObject();
 
     const jwtoken = await getJwtAuth(user as IUserModel);
