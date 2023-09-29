@@ -1,6 +1,6 @@
 # quizart-server
 
-This is a back-end for the Quiz app, this BE use [Hojo](https://hono.dev/) as an alternative for express.js it run on bun (just for testing and experimenting reasons), but could be replaced with node and npm
+This is a back-end for the Quiz app, this BE use [Hono](https://hono.dev/) as an alternative for express.js it run on bun (just for testing and experimenting reasons), but could be replaced with node and npm
 
 Create a .env file with the following constants
 
